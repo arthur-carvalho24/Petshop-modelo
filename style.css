@@ -18,6 +18,13 @@
   --sans: 'Plus Jakarta Sans', sans-serif;   /* Texto extremamente legível */
 }
 
+main, .container {
+  background-color: rgba(15, 23, 42, 0.85); /* Azul marinho escuro com 85% de opacidade */
+  padding: 30px;
+  border-radius: var(--radius);
+  margin: 20px auto;
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
