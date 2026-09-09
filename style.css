@@ -4,6 +4,13 @@
   --bg-warm: #a5ccf3;        /* Azul bem suave para fundos secundários */
   --ink: #FFFFFF; /* Transforma o texto padrão em branco para destacar na imagem */
   
+  main, .container {
+  background-color: rgba(15, 23, 42, 0.85); /* Azul marinho escuro com 85% de opacidade */
+  padding: 30px;
+  border-radius: var(--radius);
+  margin: 20px auto;
+}
+  
   --forest: #2e72a7;         /* Azul Oceano Vivo */
   --forest-deep: #2e6eaf;    /* Azul Marinho Fechado (No Header e Títulos) */
   
@@ -18,12 +25,6 @@
   --sans: 'Plus Jakarta Sans', sans-serif;   /* Texto extremamente legível */
 }
 
-main, .container {
-  background-color: rgba(15, 23, 42, 0.85); /* Azul marinho escuro com 85% de opacidade */
-  padding: 30px;
-  border-radius: var(--radius);
-  margin: 20px auto;
-}
 
 * { box-sizing: border-box; }
 
