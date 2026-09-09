@@ -1,28 +1,21 @@
 :root {
   /* --- PALETA INTENSA: AZUL MARINHO & LARANJA --- */
-  --bg: #F4F7FA;             /* Fundo neutro e limpo para destacar o azul e o laranja */
-  --bg-warm: #a5ccf3;        /* Azul bem suave para fundos secundários */
-  --ink: #FFFFFF; /* Transforma o texto padrão em branco para destacar na imagem */
+  --bg: #F4F7FA;              /* Fundo neutro e limpo para destacar o azul e o laranja */
+  --bg-warm: #a5ccf3;         /* Azul bem suave para fundos secundários */
+  --ink: #FFFFFF;             /* Transforma o texto padrão em branco para destacar na imagem */
   
-  main, .container {
-  background-color: rgba(15, 23, 42, 0.85); /* Azul marinho escuro com 85% de opacidade */
-  padding: 30px;
-  border-radius: var(--radius);
-  margin: 20px auto;
-}
+  --forest: #2e72a7;          /* Azul Oceano Vivo */
+  --forest-deep: #2e6eaf;     /* Azul Marinho Fechado (No Header e Títulos) */
   
-  --forest: #2e72a7;         /* Azul Oceano Vivo */
-  --forest-deep: #2e6eaf;    /* Azul Marinho Fechado (No Header e Títulos) */
+  --amber: #FF6B35;           /* LARANJA VIBRANTE para destaques e botões */
+  --rose: #fa6000;            /* Laranja mais escuro para o efeito Hover */
   
-  --amber: #FF6B35;          /* LARANJA VIBRANTE para destaques e botões */
-  --rose: #fa6000;           /* Laranja mais escuro para o efeito Hover */
-  
-  --line: #CBD5E1;           /* Bordas e separadores */
+  --line: #CBD5E1;            /* Bordas e separadores */
   --radius: 10px;
   
   /* --- FONTES --- */
-  --serif: 'Outfit', sans-serif;             /* Títulos marcantes e modernos */
-  --sans: 'Plus Jakarta Sans', sans-serif;   /* Texto extremamente legível */
+  --serif: 'Outfit', sans-serif;              /* Títulos marcantes e modernos */
+  --sans: 'Plus Jakarta Sans', sans-serif;    /* Texto extremamente legível */
 }
 
 
