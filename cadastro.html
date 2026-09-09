@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro — Focinho Feliz Petshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+        <rect width="40" height="40" rx="12" fill="#FF6B35"/>
+        <path d="M25 11L29 18H22L25 11Z" fill="#FFFFFF"/>
+        <path d="M11 12C9.5 12 8 14 8 17.5C8 20 9.5 21 11 20L13 15L11 12Z" fill="#FFFFFF"/>
+        <path d="M12 28C12 20 28 20 28 28C28 29 27 30 26 30H14C13 30 12 29 12 28Z" fill="#FFFFFF"/>
+        <ellipse cx="20" cy="23" rx="2.5" ry="1.8" fill="#0A2540"/>
+        <path d="M20 25V26.5M18.5 27C19 27.5 20 27.5 20 27.5C20 27.5 21 27.5 21.5 27" stroke="#0A2540" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="16.5" cy="20" r="1.2" fill="#0A2540"/>
+        <circle cx="23.5" cy="20" r="1.2" fill="#0A2540"/>
+      </svg>
+      <span>Focinho Feliz</span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="depoimentos.html">Avaliações</a>
+    </nav>
+
+    <div class="header-cta">
+      <a href="cadastro.html" class="btn btn-primary active">Cadastro</a>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main style="padding: 60px 0;">
+  <div class="wrap">
+    
+    <!-- SEÇÃO DE CADASTRO DO TUTOR E MÚLTIPLOS PETS -->
+    <section class="pet-profile-section">
+      <div class="profile-header">
+        <h2>🐾 Ficha do Tutor & Seus Pets</h2>
+        <p>Cadastre seus dados e de todos os seus pets para agilizar agendamentos e consultas!</p>
+      </div>
+
+      <form id="complete-profile-form">
+        <!-- DADOS DO TUTOR -->
+        <div class="tutor-box">
+          <h3>1. Dados do Tutor</h3>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="tutor-name">Seu Nome *</label>
+              <input type="text" id="tutor-name" placeholder="Ex: Maria Oliveira" required>
+            </div>
+            <div class="form-group">
+              <label for="tutor-phone">Seu WhatsApp (Apenas números) *</label>
+              <input type="tel" id="tutor-phone" placeholder="Ex: (83) 99999-9999" maxlength="15" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- GERENCIAMENTO DE MÚLTIPLOS PETS -->
+        <div class="pets-management-box">
+          <div class="pets-tabs-header">
+            <h3>2. Meus Pets</h3>
+            <button type="button" id="btn-add-pet" class="btn btn-secondary btn-sm">+ Adicionar Pet</button>
+          </div>
+
+          <!-- ABAS DOS PETS -->
+          <div class="pets-tabs-nav" id="pets-tabs-nav" style="display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px;">
+            <!-- As abas (Pet 1, Pet 2...) serão geradas via JS -->
+          </div>
+
+          <!-- FORMULÁRIO DO PET ATIVO -->
+          <div id="pet-profile-form" class="profile-form">
+            <input type="hidden" id="active-pet-index" value="0">
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="pet-name">Nome do Pet *</label>
+                <input type="text" id="pet-name" placeholder="Ex: Mel" required>
+              </div>
+              <div class="form-group">
+                <label for="pet-type">Espécie / Raça *</label>
+                <input type="text" id="pet-type" placeholder="Ex: Cão - Shih-Tzu" required>
+              </div>
+              <div class="form-group">
+                <label for="pet-age">Idade Aprox. *</label>
+                <input type="text" id="pet-age" placeholder="Ex: 3 anos" required>
+              </div>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="pet-gender">Sexo *</label>
+                <select id="pet-gender" required>
+                  <option value="Macho">Macho</option>
+                  <option value="Fêmea">Fêmea</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="pet-size">Porte do Pet *</label>
+                <select id="pet-size" required>
+                  <option value="Mini / Pequeno (Até 10kg)">Mini / Pequeno (Até 10kg)</option>
+                  <option value="Médio (10kg a 25kg)">Médio (10kg a 25kg)</option>
+                  <option value="Grande (25kg a 45kg)">Grande (25kg a 45kg)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="pet-weight">Peso Aprox. (Opcional)</label>
+                <input type="text" id="pet-weight" placeholder="Ex: 6.5 kg">
+              </div>
+            </div>
+
+            <div class="profile-actions" style="display: flex; align-items: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+              <button type="submit" id="btn-save-profile" class="btn btn-primary">Salvar Todos os Dados</button>
+              <button type="button" id="btn-delete-pet" class="btn-delete-pet hidden">Remover este Pet</button>
+              <span id="profile-saved-msg" class="profile-saved-msg hidden" style="color: #10B981; font-weight: 600;">✓ Dados salvos no navegador!</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>© 2026 Focinho Feliz Petshop</span>
+    <span>Feito por Automatize — Arthur Carvalho</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

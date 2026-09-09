@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depoimentos — Focinho Feliz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO DO SITE -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+   <a href="index.html" class="logo">
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+    <!-- caminhos do svg -->
+    <rect width="40" height="40" rx="12" fill="#FF6B35"/>
+    <path d="M25 11L29 18H22L25 11Z" fill="#FFFFFF"/>
+    <path d="M11 12C9.5 12 8 14 8 17.5C8 20 9.5 21 11 20L13 15L11 12Z" fill="#FFFFFF"/>
+    <path d="M12 28C12 20 28 20 28 28C28 29 27 30 26 30H14C13 30 12 29 12 28Z" fill="#FFFFFF"/>
+    <ellipse cx="20" cy="23" rx="2.5" ry="1.8" fill="#0A2540"/>
+    <path d="M20 25V26.5M18.5 27C19 27.5 20 27.5 20 27.5C20 27.5 21 27.5 21.5 27" stroke="#0A2540" stroke-width="1.2" stroke-linecap="round"/>
+    <circle cx="16.5" cy="20" r="1.2" fill="#0A2540"/>
+    <circle cx="23.5" cy="20" r="1.2" fill="#0A2540"/>
+  </svg>
+  <span>Focinho Feliz</span>
+</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Início</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="depoimentos.html" class="active">Avaliações</a>
+      </nav>
+      <a href="cadastro.html" class="btn btn-primary header-cta">Cadastro</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-top: 40px; padding-bottom: 80px;">
+    <h2>O que dizem os tutores</h2>
+    <p class="hero-lede">A opinião de quem confia o amor da sua vida aos nossos cuidados todos os dias.</p>
+
+    <!-- FORMULÁRIO DE NOVA AVALIAÇÃO -->
+    <section class="add-review-section">
+      <h3>Deixe sua Avaliação</h3>
+      <p>Já trouxe seu pet na Focinho Feliz? Conte para a gente como foi sua experiência!</p>
+      
+      <form id="review-form" class="review-form">
+        <div class="form-group-row">
+          <div class="form-group">
+            <label for="author-name">Seu Nome / Nome do Pet *</label>
+            <input type="text" id="author-name" placeholder="Ex: Ana Silva (Tutora do Mel)" required>
+          </div>
+          <div class="form-group">
+            <label for="rating-select">Sua Nota *</label>
+            <select id="rating-select" required>
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5/5 - Excelente)</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4/5 - Muito Bom)</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ (3/5 - Bom)</option>
+              <option value="⭐⭐">⭐⭐ (2/5 - Regular)</option>
+              <option value="⭐">⭐ (1/5 - Ruim)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="review-text-input">Seu Depoimento *</label>
+          <textarea id="review-text-input" rows="3" placeholder="Conte como foi o atendimento, banho, consulta ou hospedagem..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Publicar Avaliação</button>
+      </form>
+    </section>
+
+    <!-- GRADE DE DEPOIMENTOS -->
+    <div class="reviews-grid" id="reviews-container">
+
+      <!-- Depoimento 1 -->
+      <article class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">“Levei minha gata pra tosa higiênica com medo, porque ela odeia sair de casa e fica muito estressada. Saiu de lá super tranquila! O carinho com que trataram a Mimosa não tem preço.”</p>
+        <div class="review-author">
+          <strong>Renata Aguiar</strong>
+          <span>Tutora da Mimosa (Gata)</span>
+        </div>
+      </article>
+
+      <!-- Depoimento 2 -->
+      <article class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">“O Thor sempre odiou tomar banho e em outros petshops voltava assustado. Na Focinho Feliz a paciência das meninas é diferenciada. Ele já entra abanando o rabo feliz da vida!”</p>
+        <div class="review-author">
+          <strong>Carlos Eduardo</strong>
+          <span>Tutor do Thor (Golden Retriever)</span>
+        </div>
+      </article>
+
+      <!-- Depoimento 3 -->
+      <article class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">“A Dra. Marina é extremamente atenciosa nas consultas. Explicou tudo sobre as vacinas com calma e não teve nenhuma pressa no atendimento. Clínica excelente e super limpa.”</p>
+        <div class="review-author">
+          <strong>Juliana Mendes</strong>
+          <span>Tutora da Mel (Shihtzu)</span>
+        </div>
+      </article>
+
+      <!-- Depoimento 4 -->
+      <article class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">“Deixei o Milo na hospedagem durante um fim de semana inteiro. Recebi fotos e vídeos dele brincando o tempo todo. Fiquei com o coração super tranquilo durante a viagem!”</p>
+        <div class="review-author">
+          <strong>Rodrigo Santoro</strong>
+          <span>Tutor do Milo (Vira-lata)</span>
+        </div>
+      </article>
+
+      <!-- Depoimento 5 -->
+      <article class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">“O acabamento na tesoura que fazem aqui é impecável! O banho cheira por dias e o pelo do meu Poodle fica perfeito. Recomendo de olhos fechados pra todo mundo do bairro.”</p>
+        <div class="review-author">
+          <strong>Beatriz Lima</strong>
+          <span>Tutora do Bob (Poodle)</span>
+        </div>
+      </article>
+
+      <!-- Depoimento 6 -->
+      <article class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">“Gosto muito do atendimento com hora marcada. Nunca tem aquela barulhada de vários cachorros latindo ao mesmo tempo na fila. Um ambiente super familiar e calmo.”</p>
+        <div class="review-author">
+          <strong>Fernanda & Lucas</strong>
+          <span>Tutores da Luna (Bulldog Francês)</span>
+        </div>
+      </article>
+
+      <!-- Depoimento 7 -->
+      <article class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">“Os produtos da lojinha são de ótima qualidade e os petiscos naturais são os favoritos do Sam. Sem falar na facilidade de agendar direto pelo WhatsApp!”</p>
+        <div class="review-author">
+          <strong>Marcelo Castro</strong>
+          <span>Tutor do Sam (Beagle)</span>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Focinho Feliz Petshop</span>
+      <span>Feito por Automatize — Arthur Carvalho.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Lógica para adicionar novos depoimentos dinamicamente na página
+    const reviewForm = document.getElementById('review-form');
+    const reviewsContainer = document.getElementById('reviews-container');
+
+    if (reviewForm) {
+      reviewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const author = document.getElementById('author-name').value;
+        const rating = document.getElementById('rating-select').value;
+        const text = document.getElementById('review-text-input').value;
+
+        const newCard = document.createElement('article');
+        newCard.className = 'review-card';
+        newCard.style.animation = 'fadeIn 0.5s ease';
+        newCard.innerHTML = `
+          <div class="review-stars">${rating}</div>
+          <p class="review-text">“${text}”</p>
+          <div class="review-author">
+            <strong>${author}</strong>
+            <span>Cliente Recente</span>
+          </div>
+        `;
+
+        reviewsContainer.prepend(newCard);
+        reviewForm.reset();
+        alert('Obrigado pela avaliação! Seu depoimento foi publicado com sucesso.');
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,931 @@
+:root {
+  /* --- PALETA INTENSA: AZUL MARINHO & LARANJA --- */
+  --bg: #F4F7FA;             /* Fundo neutro e limpo para destacar o azul e o laranja */
+  --bg-warm: #a5ccf3;        /* Azul bem suave para fundos secundários */
+  --ink: #0F172A;            /* Texto escuro com alto contraste */
+  
+  --forest: #2e72a7;         /* Azul Oceano Vivo */
+  --forest-deep: #2e6eaf;    /* Azul Marinho Fechado (No Header e Títulos) */
+  
+  --amber: #FF6B35;          /* LARANJA VIBRANTE para destaques e botões */
+  --rose: #fa6000;           /* Laranja mais escuro para o efeito Hover */
+  
+  --line: #CBD5E1;           /* Bordas e separadores */
+  --radius: 10px;
+  
+  /* --- FONTES --- */
+  --serif: 'Outfit', sans-serif;             /* Títulos marcantes e modernos */
+  --sans: 'Plus Jakarta Sans', sans-serif;   /* Texto extremamente legível */
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--forest-deep);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.02em;
+}
+
+h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+
+p { margin: 0 0 1em; max-width: 62ch; }
+
+a { color: inherit; }
+
+/* --- BOTÕES --- */
+.btn {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Botão Principal: Laranja Vibrante */
+.btn-primary {
+  background: var(--amber);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+.btn-primary:hover { 
+  background: var(--rose); 
+  transform: translateY(-1px);
+}
+
+/* Botão Secundário: Azul Marinho */
+.btn-ghost {
+  background: transparent;
+  color: var(--forest-deep);
+  border: 2px solid var(--forest-deep);
+}
+.btn-ghost:hover { 
+  background: var(--forest-deep); 
+  color: #fff; 
+}
+
+/* --- HEADER AZUL MARINHO EM DESTAQUE --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: var(--forest-deep);
+  border-bottom: 3px solid var(--amber);
+  z-index: 20;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  margin-right: auto;
+}
+
+/* Animação suave */
+@keyframes flutuar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Aplica na logo da barra de cima E na logo grande do início */
+.logo-icon, 
+.brand-badge-icon {
+  animation: flutuar 3s ease-in-out infinite;
+}
+.logo-icon {
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+.main-nav {
+  display: flex;
+  gap: 26px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #E2E8F0 !important;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active { 
+  color: var(--amber) !important;
+  font-weight: 700;
+}
+
+.header-cta { white-space: nowrap; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: #FFFFFF;
+}
+
+/* Hero */
+.hero { padding: 64px 0 40px; }
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-kicker {
+  font-size: 0.95rem;
+  color: var(--amber);
+  font-weight: 700;
+  margin-bottom: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-text h1 {
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: 800;
+  color: var(--forest-deep) !important;
+  max-width: 16ch;
+}
+
+.hero-lede { 
+  font-size: 1.05rem; 
+  color: var(--ink);
+}
+
+.hero-actions { display: flex; gap: 14px; margin-top: 1.5em; flex-wrap: wrap; }
+
+.hero-art { animation: rise 0.7s ease both; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art { animation: none; }
+}
+
+/* Stats */
+.stats {
+  background: var(--forest-deep);
+  color: #F3EEDD;
+  padding: 34px 0;
+}
+.stats-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.stat { flex: 1; min-width: 160px; }
+.stat-num {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--amber);
+  font-weight: 500;
+}
+.stat-label { font-size: 0.9rem; color: #D8D3BE; }
+
+/* Services */
+.services { padding: 72px 0; }
+
+.service-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.service-row--big { padding: 34px 0; }
+.service-row--big h3 { font-size: 1.4rem; }
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-copy p { margin-bottom: 0; color: #4A493F; }
+
+.service-media {
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* About */
+.about { background: var(--bg-warm); padding: 72px 0; }
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-text p { color: #4A493F; }
+
+.quote {
+  margin: 0;
+  padding: 28px 0 0 24px;
+  border-left: 3px solid var(--amber);
+  font-family: var(--serif);
+}
+.quote p {
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--forest-deep);
+}
+.quote cite {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.85rem;
+  color: #6A6858;
+  margin-top: 10px;
+}
+
+/* Gallery */
+.gallery { padding: 72px 0; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.gallery-card {
+  margin: 0;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-warm);
+}
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-card figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.85);
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--ink);
+}
+
+/* CTA band */
+.cta-band {
+  background: var(--forest);
+  color: #fff;
+  padding: 56px 0;
+}
+.cta-band h2 { color: #fff; }
+.cta-band p { color: #DDE6DC; }
+
+.cta-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.contact-block { text-align: right; }
+.contact-detail {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+  color: #C9D6C6;
+}
+
+.cta-band .btn-primary { background: var(--amber); color: var(--forest-deep); font-weight: 600; }
+.cta-band .btn-primary:hover { background: #F0B268; }
+
+/* Footer */
+.site-footer {
+  padding: 24px 0;
+  font-size: 0.85rem;
+  color: #83816F;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* --- LOJA, PRODUTOS E CARRINHO --- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-img-placeholder {
+  font-size: 3rem;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  padding: 20px 0;
+  margin-bottom: 12px;
+}
+
+.product-price {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--forest-deep);
+  font-weight: 600;
+  margin: 8px 0 16px;
+}
+
+/* Carrinho Flutuante */
+.cart-float-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--forest-deep);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 22px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-float-btn span {
+  background: var(--amber);
+  color: var(--forest-deep);
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.9rem;
+}
+
+/* Modal do Carrinho e Detalhes */
+.cart-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  padding: 16px;
+}
+
+.cart-modal-backdrop.hidden {
+  display: none;
+}
+
+.cart-modal-content {
+  background: var(--bg);
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cart-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.cart-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.cart-items-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.95rem;
+}
+
+.cart-total-block {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 2px solid var(--forest);
+}
+
+.style-full {
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Depoimentos */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.review-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.review-stars {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.review-author strong {
+  display: block;
+  color: var(--forest-deep);
+  font-weight: 600;
+}
+
+.review-author span {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Formulários e Cadastros */
+.add-review-section,
+.pet-profile-section {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.review-form,
+.profile-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea,
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--bg);
+  margin-top: 6px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.form-control:focus {
+  outline: 2px solid var(--forest);
+  background: #fff;
+}
+
+.clickable-product {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.clickable-product:hover {
+  opacity: 0.8;
+}
+
+.style-center { text-align: center; }
+
+.style-big-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem !important;
+}
+
+.detail-description {
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.tutor-box {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 16px;
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+}
+
+.tutor-box h3 {
+  font-size: 1.1rem;
+  color: var(--forest-deep);
+  margin-bottom: 12px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.btn-delete-pet {
+  background: none;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-delete-pet:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.style-mb-16 { margin-bottom: 16px; }
+
+/* Responsive Media Queries Gerais */
+@media (max-width: 800px) {
+  .main-nav, .header-cta { display: none; }
+  .nav-toggle { display: flex; }
+
+  .main-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+    gap: 16px;
+  }
+
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-art { order: -1; max-width: 260px; margin: 0 auto; }
+  .about-inner { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .cta-inner { text-align: left; }
+  .contact-block { text-align: left; }
+}
+
+@media (max-width: 600px) {
+  .form-group-row { grid-template-columns: 1fr; }
+  .service-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  .service-media {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+/* Animação de entrada suave para o cabeçalho */
+@keyframes slideDownHeader {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.site-header {
+  animation: slideDownHeader 0.6s ease-out forwards;
+}
+
+/* Efeito interativo leve na logo ao passar o mouse */
+.logo {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo:hover .logo-icon {
+  animation: pulseLogo 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes pulseLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-4deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(4deg) scale(1.03);
+  }
+}
+
+/* Transição elegante para os links do menu */
+.main-nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary, #FF6B35);
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+/* Padronização do tamanho das imagens dos produtos */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-img-placeholder {
+  width: 100%;
+  height: 180px; /* Defina aqui a altura padrão que preferir (ex: 180px ou 200px) */
+  overflow: hidden;
+  padding: 0 !important;
+  background-color: #f7f7f7;
+  border-radius: 8px 8px 0 0;
+}
+
+.product-img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a foto preencher o espaço sem distorcer ou esticar */
+  display: block;
+}
+/* --- BÔNUS ESTÉTICO: EFEITO DE HOVER SUAVE NAS CARTAS E BOTÕES --- */
+.product-card, .service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover, .service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(10, 37, 64, 0.12);
+}
+@keyframes pulseBtn {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+.btn-pulse {
+  animation: pulseBtn 2.5s infinite;
+}
+#cart-modal, #product-detail-modal {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+/* --- ANIMAÇÃO DE FLUTUAÇÃO SUAVE PARA OS PETS --- */
+@keyframes floatPet {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg); /* Sobe 8px e inclina levemente */
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Classes de movimento com tempos diferentes para não flutuarem iguaizinhos */
+.floating-pet-1 {
+  animation: floatPet 4s ease-in-out infinite;
+}
+
+.floating-pet-2 {
+  animation: floatPet 5s ease-in-out infinite 1s; /* Começa com 1 segundo de atraso */
+}
+
+.floating-pet-3 {
+  animation: floatPet 4.5s ease-in-out infinite 0.5s;
+}
+
+.floating-pet-4 {
+  animation: floatPet 5.5s ease-in-out infinite 1.5s;
+}
+
+/* --- BÔNUS ESTÉTICO: ZOOM SUAVE NAS FOTOS DA GALERIA E CARTÕES AO PASSar O MOUSE --- */
+.gallery-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-card img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(10, 37, 64, 0.15);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05); /* Dá um zoom delicado na foto do pet quando o mouse passa por cima */
+}
+/* --- ANIMAÇÃO MAIS SUAVE APENAS PARA OS SERVIÇOS --- */
+@keyframes floatServiceSoft {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0.3deg); /* Sobe menos e inclina bem pouco */
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Classes lentas e delicadas para a página de serviços */
+.service-float-1 {
+  animation: floatServiceSoft 7s ease-in-out infinite;
+}
+
+.service-float-2 {
+  animation: floatServiceSoft 8.5s ease-in-out infinite 1s;
+}
+
+.service-float-3 {
+  animation: floatServiceSoft 8s ease-in-out infinite 0.5s;
+}
+
+.service-float-4 {
+  animation: floatServiceSoft 9s ease-in-out infinite 1.5s;
+}
