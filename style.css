@@ -18,6 +18,15 @@
   --sans: 'Plus Jakarta Sans', sans-serif;    /* Texto extremamente legível */
 }
 
+/* Fundo translúcido restrito apenas onde o texto está escrito */
+.hero-text, .about-text {
+  background-color: rgba(15, 23, 42, 0.75); /* Fundo escuro elegante */
+  padding: 30px;
+  border-radius: var(--radius);
+  display: inline-block; /* Faz a caixa se ajustar ao tamanho do conteúdo */
+  max-width: 100%;
+}
+
 
 * { box-sizing: border-box; }
 
