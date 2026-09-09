@@ -2,7 +2,7 @@
   /* --- PALETA INTENSA: AZUL MARINHO & LARANJA --- */
   --bg: #F4F7FA;             /* Fundo neutro e limpo para destacar o azul e o laranja */
   --bg-warm: #a5ccf3;        /* Azul bem suave para fundos secundários */
-  --ink: #0F172A;            /* Texto escuro com alto contraste */
+  --ink:#FFFFFF; /* Transforma o texto padrão em branco para destacar na imagem */
   
   --forest: #2e72a7;         /* Azul Oceano Vivo */
   --forest-deep: #2e6eaf;    /* Azul Marinho Fechado (No Header e Títulos) */
