@@ -26,10 +26,10 @@ body {
   margin: 0;
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--bg);
+  background: url('imagens/backgroundsitepet2') no-repeat center center fixed;
+  background-size: cover;
   line-height: 1.55;
 }
-
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
