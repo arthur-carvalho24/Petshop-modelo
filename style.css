@@ -941,3 +941,167 @@ a { color: inherit; }
 .service-float-4 {
   animation: floatServiceSoft 9s ease-in-out infinite 1.5s;
 }
+/* --- CAIXA BRANCA SEMI-TRANSPARENTE PARA A PÁGINA DE SERVIÇOS --- */
+.services-container-box {
+  background-color: rgba(255, 255, 255, 0.9); /* Fundo branco levemente translúcido */
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Garante que os títulos e textos de serviços fiquem escuros e legíveis dentro da caixa */
+.services-container-box h2,
+.services-container-box h3 {
+  color: var(--forest-deep) !important;
+}
+
+.services-container-box p {
+  color: #1E293B !important;
+}
+/* --- CORREÇÃO DE LEITURA NA SEÇÃO SOBRE (INDEX) --- */
+.about {
+  background-color: #f8fafc !important; /* Fundo limpo e sólido para a seção Sobre */
+}
+
+.about h2,
+.about .about-text p,
+.about .quote p {
+  color: #0A2540 !important; /* Texto em azul marinho escuro de alta legibilidade */
+  text-shadow: none !important; /* Remove totalmente a sombra que estava embaçando as letras */
+}
+
+.about .quote cite {
+  color: #475569 !important; /* Cor suave para a citação/autor */
+  text-shadow: none !important;
+}
+/* --- CORREÇÃO DA SEÇÃO SOBRE (INDEX) --- */
+
+/* 1. Removemos a caixa escura translúcida geral dessa seção */
+.about-text {
+  background-color: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 2. Deixamos o título "Um salão pequeno, de propósito" bem destacado e legível */
+.about-text h2 {
+  color: var(--forest-deep) !important;
+  text-shadow: none !important;
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  margin-bottom: 20px;
+}
+
+/* 3. Deixamos os parágrafos da história com uma cor escura sólida e limpa */
+.about-text p {
+  color: #1E293B !important; /* Azul escuro bem sólido */
+  text-shadow: none !important; /* Remove qualquer sombra borrada */
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+/* --- CORREÇÃO DA SEÇÃO FINAL (CTA WHATSAPP - INDEX) --- */
+
+/* Remove a sombra geral do texto dentro da faixa de contato */
+.cta-band, 
+.cta-band h2, 
+.cta-band p, 
+.cta-band .contact-detail {
+  text-shadow: none !important;
+}
+
+/* Deixa os textos com alta legibilidade */
+.cta-band h2 {
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
+.cta-band p,
+.cta-band .contact-detail {
+  color: #F1F5F9 !important;
+}
+
+/* Limpa qualquer sombra indesejada no botão do WhatsApp dessa seção */
+.cta-band .btn-primary {
+  text-shadow: none !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important; /* Sombra suave apenas na profundidade do botão, se desejar */
+}
+/* ========================================================== */
+/* --- LIMPEZA GLOBAL DE SOMBRAS E OTIMIZAÇÃO DE LEITURA --- */
+/* ========================================================== */
+
+/* Remove qualquer sombra borrada de dentro de cartões, modais, formulários e blocos de texto em todo o site */
+.product-card, 
+.service-row, 
+.services-container-box, 
+.review-card, 
+.add-review-section, 
+.pet-profile-section, 
+.cart-modal-content, 
+.tutor-box,
+.form-group {
+  text-shadow: none !important;
+}
+
+/* Garante que todos os títulos e textos dentro desses blocos fiquem com cores sólidas e super legíveis */
+.product-card h3, .product-card p, .product-card span,
+.service-row h3, .service-row p, .service-row span,
+.services-container-box h2, .services-container-box h3, .services-container-box p,
+.review-card h3, .review-card p, .review-card span,
+.add-review-section h2, .add-review-section h3,
+.pet-profile-section h2, .pet-profile-section h3,
+.tutor-box h3, .form-group label {
+  text-shadow: none !important;
+  color: #1E293B !important; /* Azul escuro sólido para máxima legibilidade */
+}
+
+/* Mantém os títulos principais das caixas destacados no azul marinho da marca */
+.services-container-box h2,
+.services-container-box h3,
+.service-row h3,
+.product-card h3 {
+  color: var(--forest-deep) !important;
+}
+/* --- CORREÇÃO DE LEGIBILIDADE PARA SUBTÍTULOS E FRASES DE AVISO --- */
+
+/* Força subtítulos, parágrafos explicativos e chamadas a ficarem escuros em fundos claros */
+.services-container-box p,
+.pet-profile-section p,
+.add-review-section p,
+.profile-form p,
+.review-form p,
+main p {
+  color: #334155 !important; /* Cinza escuro sofisticado e super legível */
+  text-shadow: none !important;
+}
+/* --- DESTAQUE PARA FRASES EXECUTADAS DIRETAMENTE SOBRE O FUNDO/IMAGEM --- */
+
+/* 1. Frase da página de Depoimentos / Avaliações */
+.reviews-hero-text, 
+section.reviews > .wrap > p, 
+.reviews p.intro,
+.depoimentos-subtitle {
+  background-color: rgba(247, 249, 250, 0.85); /* Fundo azul marinho escuro translúcido */
+  color: #000000 !important;                  /* Texto branco brilhante */
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: inline-block;                      /* Faz a caixa abraçar apenas o texto */
+  text-shadow: none !important;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. Frase da página de Produtos ("Clique na foto do produto...") */
+.products-subtitle,
+.produtos-instruction,
+section.products > .wrap > p {
+  background-color: rgba(247, 249, 250, 0.85); /* Fundo branco levemente translúcido */
+  color: #000000 !important;                  /* Texto azul marinho bem escuro */
+  padding: 10px 18px;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: 600;
+  text-shadow: none !important;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
