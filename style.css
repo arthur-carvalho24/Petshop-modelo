@@ -1030,3 +1030,21 @@ section.reviews > .wrap > p,
   color: #1E293B !important; /* Cor escura e perfeitamente legível */
   text-shadow: none !important;
 }
+/* --- CORREÇÃO DE SOMBRA E COR DOS TEXTOS NO MODAL DE SERVIÇOS --- */
+#service-modal h3,
+#service-modal p,
+#service-modal label,
+#service-modal span,
+#service-modal small {
+  color: #1E293B !important;
+  text-shadow: none !important;
+}
+
+#service-modal h3 {
+  color: var(--forest-deep) !important; /* Mantém o título principal com o azul do marinho */
+}
+
+#modal-service-price {
+  color: var(--amber) !important; /* Mantém o preço destacado em laranja */
+  text-shadow: none !important;
+}
