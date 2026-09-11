@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* /* ============================================================================
+/* ============================================================================
  * 1. NAVEGAÇÃO MOBILE (MENU HAMBÚRGUER)
  * ============================================================================ */
 function initMobileNavigation() {
@@ -87,6 +87,7 @@ function initPetProfileSystem() {
 
   const tutorNameInput = document.getElementById('tutor-name');
   const tutorPhoneInput = document.getElementById('tutor-phone');
+  const tutorEmailInput = document.getElementById('tutor-email');
   const petNameInput = document.getElementById('pet-name');
   const petTypeInput = document.getElementById('pet-type');
   const petAgeInput = document.getElementById('pet-age');
@@ -101,20 +102,21 @@ function initPetProfileSystem() {
   const savedMsg = document.getElementById('profile-saved-msg');
 
   let profileData = JSON.parse(localStorage.getItem('focinho_profile')) || {
-    tutor: { name: '', phone: '' },
+    tutor: { name: '', phone: '', email: '' },
     pets: [{ name: '', type: '', age: '', gender: 'Macho', size: 'Mini / Pequeno (Até 10kg)', weight: '' }]
   };
 
   let currentIndex = 0;
 
   function loadDataToInputs() {
-    if (!profileData.tutor) profileData.tutor = { name: '', phone: '' };
+    if (!profileData.tutor) profileData.tutor = { name: '', phone: '', email: '' };
     if (!profileData.pets || profileData.pets.length === 0) {
       profileData.pets = [{ name: '', type: '', age: '', gender: 'Macho', size: 'Mini / Pequeno (Até 10kg)', weight: '' }];
     }
 
     tutorNameInput.value = profileData.tutor.name || '';
     tutorPhoneInput.value = profileData.tutor.phone || '';
+    tutorEmailInput.value = profileData.tutor.email || '';
     loadActivePetToInputs();
     renderTabs();
   }
@@ -142,7 +144,7 @@ function initPetProfileSystem() {
   function saveCurrentPetFromInputs() {
     profileData.tutor.name = tutorNameInput.value.trim();
     profileData.tutor.phone = tutorPhoneInput.value.trim();
-
+    if (tutorEmailInput) profileData.tutor.email = tutorEmailInput.value.trim(); 
     if (!profileData.pets[currentIndex]) profileData.pets[currentIndex] = {};
 
     profileData.pets[currentIndex] = {
@@ -369,6 +371,7 @@ function initServiceModalSystem() {
       if (tutor.name) {
         mensagem += `👤 *Tutor(a):* ${tutor.name}\n`;
         if (tutor.phone) mensagem += `📞 *Telefone:* ${tutor.phone}\n`;
+        if (tutor.email) mensagem += `📧 *E-mail:* ${tutor.email}\n`;
       }
       mensagem += `🐾 *Serviço:* ${currentService.name}\n`;
       mensagem += `💰 *Valor Estimado:* ${currentService.finalPrice}\n\n`;

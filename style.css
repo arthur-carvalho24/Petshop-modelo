@@ -1,33 +1,32 @@
+/**
+ * ============================================================================
+ * FOCINHO FELIZ - FOLHA DE ESTILOS UNIFICADA E ORGANIZADA
+ * ============================================================================
+ */
+
 :root {
   /* --- PALETA INTENSA: AZUL MARINHO & LARANJA --- */
-  --bg: #F4F7FA;              /* Fundo neutro e limpo para destacar o azul e o laranja */
-  --bg-warm: #a5ccf3;         /* Azul bem suave para fundos secundários */
-  --ink: #ffffff;             /* Transforma o texto padrão em branco para destacar na imagem */
+  --bg: #F4F7FA;            /* Fundo neutro e limpo */
+  --bg-warm: #a5ccf3;       /* Azul suave para fundos secundários */
+  --ink: #ffffff;           /* Texto padrão claro para fundos com imagem */
   
-  --forest: #2e72a7;          /* Azul Oceano Vivo */
-  --forest-deep: #2e6eaf;     /* Azul Marinho Fechado (No Header e Títulos) */
+  --forest: #2e72a7;        /* Azul Oceano Vivo */
+  --forest-deep: #2e6eaf;   /* Azul Marinho Fechado (Header e Títulos) */
   
-  --amber: #FF6B35;           /* LARANJA VIBRANTE para destaques e botões */
-  --rose: #fa6000;            /* Laranja mais escuro para o efeito Hover */
+  --amber: #FF6B35;         /* LARANJA VIBRANTE para destaques e botões */
+  --rose: #fa6000;          /* Laranja escuro para Hover */
   
-  --line: #CBD5E1;            /* Bordas e separadores */
+  --line: #CBD5E1;          /* Bordas e separadores */
   --radius: 10px;
   
   /* --- FONTES --- */
-  --serif: 'Outfit', sans-serif;              /* Títulos marcantes e modernos */
-  --sans: 'Plus Jakarta Sans', sans-serif;    /* Texto extremamente legível */
+  --serif: 'Outfit', sans-serif;
+  --sans: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Fundo translúcido restrito apenas onde o texto está escrito */
-.hero-text, .about-text {
-  background-color: rgba(255, 255, 255, 0.75); /* Fundo escuro elegante */
-  padding: 30px;
-  border-radius: var(--radius);
-  display: inline-block; /* Faz a caixa se ajustar ao tamanho do conteúdo */
-  max-width: 100%;
-}
-
-
+/* ============================================================================
+ * 1. CONFIGURAÇÕES GLOBAIS E RESET
+ * ============================================================================ */
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -60,10 +59,11 @@ h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 700; }
 h3 { font-size: 1.2rem; font-weight: 600; }
 
 p { margin: 0 0 1em; max-width: 62ch; }
+a { color: inherit; text-decoration: none; }
 
-a { color: inherit; }
-
-/* --- BOTÕES --- */
+/* ============================================================================
+ * 2. BOTÕES
+ * ============================================================================ */
 .btn {
   display: inline-block;
   padding: 0.75em 1.5em;
@@ -73,9 +73,10 @@ a { color: inherit; }
   font-weight: 700;
   font-size: 0.95rem;
   transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  border: none;
 }
 
-/* Botão Principal: Laranja Vibrante */
 .btn-primary {
   background: var(--amber);
   color: #fff;
@@ -86,7 +87,6 @@ a { color: inherit; }
   transform: translateY(-1px);
 }
 
-/* Botão Secundário: Azul Marinho */
 .btn-ghost {
   background: transparent;
   color: var(--forest-deep);
@@ -97,13 +97,26 @@ a { color: inherit; }
   color: #fff; 
 }
 
-/* --- HEADER AZUL MARINHO EM DESTAQUE --- */
+.btn-pulse {
+  animation: pulseBtn 2.5s infinite;
+}
+
+@keyframes pulseBtn {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* ============================================================================
+ * 3. HEADER E NAVEGAÇÃO
+ * ============================================================================ */
 .site-header {
   position: sticky;
   top: 0;
   background: var(--forest-deep);
   border-bottom: 3px solid var(--amber);
   z-index: 20;
+  animation: slideDownHeader 0.6s ease-out forwards;
 }
 
 .header-inner {
@@ -124,22 +137,20 @@ a { color: inherit; }
   font-size: 1.2rem;
   color: #FFFFFF;
   margin-right: auto;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Animação suave */
-@keyframes flutuar {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0px); }
+.logo:hover {
+  transform: scale(1.05);
 }
 
-/* Aplica na logo da barra de cima E na logo grande do início */
 .logo-icon, 
 .brand-badge-icon {
   animation: flutuar 3s ease-in-out infinite;
 }
-.logo-icon {
-  animation: flutuar 3s ease-in-out infinite;
+
+.logo:hover .logo-icon {
+  animation: pulseLogo 0.8s infinite alternate ease-in-out;
 }
 
 .main-nav {
@@ -148,11 +159,27 @@ a { color: inherit; }
 }
 
 .main-nav a {
-  text-decoration: none;
   font-size: 0.95rem;
   color: #E2E8F0 !important;
   font-weight: 500;
-  transition: color 0.2s ease;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--amber);
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
 }
 
 .main-nav a:hover,
@@ -178,7 +205,13 @@ a { color: inherit; }
   background: #FFFFFF;
 }
 
-/* Hero */
+.mobile-cadastro-link {
+  display: none;
+}
+
+/* ============================================================================
+ * 4. PÁGINA INICIAL (INDEX - HERO, STATS, ABOUT, GALLERY, CTA)
+ * ============================================================================ */
 .hero { padding: 64px 0 40px; }
 
 .hero-inner {
@@ -197,6 +230,14 @@ a { color: inherit; }
   letter-spacing: 0.05em;
 }
 
+.hero-text {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 30px;
+  border-radius: var(--radius);
+  display: inline-block;
+  max-width: 100%;
+}
+
 .hero-text h1 {
   font-size: clamp(2rem, 4vw, 2.9rem);
   font-weight: 800;
@@ -206,19 +247,24 @@ a { color: inherit; }
 
 .hero-lede { 
   font-size: 1.05rem; 
-  color: var(--ink);
+  color: #1E293B;
 }
 
 .hero-actions { display: flex; gap: 14px; margin-top: 1.5em; flex-wrap: wrap; }
 
 .hero-art { animation: rise 0.7s ease both; }
-@keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-art { animation: none; }
+/* Remove sombra especificamente na Hero da Home */
+.hero,
+.hero-text h1,
+.hero-lede,
+.hero-kicker,
+.hero-art h1,
+.hero-art p,
+.hero-art span,
+.hero-actions .btn,
+.hero-actions a {
+  text-shadow: none !important;
 }
 
 /* Stats */
@@ -243,8 +289,158 @@ a { color: inherit; }
 }
 .stat-label { font-size: 0.9rem; color: #D8D3BE; }
 
-/* Services */
+/* About */
+.about { background: var(--bg-warm); padding: 72px 0; }
+.about-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-text {
+  background-color: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.about-text h2 {
+  color: var(--forest-deep) !important;
+  text-shadow: none !important;
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  color: #1E293B !important;
+  text-shadow: none !important;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.quote {
+  margin: 0;
+  padding: 28px 0 0 24px;
+  border-left: 3px solid var(--amber);
+  font-family: var(--serif);
+}
+.quote p {
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #0A2540 !important;
+  text-shadow: none !important;
+}
+.quote cite {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.85rem;
+  color: #475569 !important;
+  text-shadow: none !important;
+  margin-top: 10px;
+}
+
+/* Gallery */
+.gallery { padding: 72px 0; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.gallery-card {
+  margin: 0;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-warm);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(10, 37, 64, 0.15);
+}
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+.gallery-card figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.85);
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #000;
+}
+
+/* CTA band */
+.cta-band {
+  background: var(--forest);
+  color: #fff;
+  padding: 56px 0;
+}
+.cta-band h2 { color: #fff; text-shadow: none !important; }
+.cta-band p, .cta-band .contact-detail { color: #F1F5F9 !important; text-shadow: none !important; }
+
+.cta-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.contact-block { text-align: right; }
+.cta-band .btn-primary { background: var(--amber); color: var(--forest-deep); font-weight: 600; text-shadow: none !important; }
+
+/* Footer */
+.site-footer {
+  padding: 24px 0;
+  font-size: 0.85rem;
+  color: #83816F;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================================
+ * 5. PÁGINA DE SERVIÇOS
+ * ============================================================================ */
 .services { padding: 72px 0; }
+
+.services-container-box {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-shadow: none !important;
+}
+
+.services-container-box h2,
+.services-container-box h3 {
+  color: var(--forest-deep) !important;
+  text-shadow: none !important;
+}
+
+.services-container-box p {
+  color: #1E293B !important;
+  text-shadow: none !important;
+}
 
 .service-list {
   list-style: none;
@@ -260,22 +456,22 @@ a { color: inherit; }
   align-items: center;
   padding: 26px 0;
   border-bottom: 1px solid var(--line);
+  text-shadow: none !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-row:hover {
+  transform: translateY(-4px);
 }
 
 .service-row--big { padding: 34px 0; }
 .service-row--big h3 { font-size: 1.4rem; }
 
-.service-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--bg-warm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.service-row h3, .service-row p, .service-row span {
+  text-shadow: none !important;
+  color: #1E293B;
 }
-
-.service-copy p { margin-bottom: 0; color: #4A493F; }
+.service-row h3 { color: var(--forest-deep) !important; }
 
 .service-media {
   width: 100%;
@@ -292,114 +488,9 @@ a { color: inherit; }
   display: block;
 }
 
-/* About */
-.about { background: var(--bg-warm); padding: 72px 0; }
-
-.about-inner {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
-  align-items: start;
-}
-
-.about-text p { color: #4A493F; }
-
-.quote {
-  margin: 0;
-  padding: 28px 0 0 24px;
-  border-left: 3px solid var(--amber);
-  font-family: var(--serif);
-}
-.quote p {
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--forest-deep);
-}
-.quote cite {
-  display: block;
-  font-family: var(--sans);
-  font-style: normal;
-  font-size: 0.85rem;
-  color: #6A6858;
-  margin-top: 10px;
-}
-
-/* Gallery */
-.gallery { padding: 72px 0; }
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.gallery-card {
-  margin: 0;
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg-warm);
-}
-.gallery-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.gallery-card figcaption {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  font-size: 0.75rem;
-  background: rgba(255,255,255,0.85);
-  padding: 4px 8px;
-  border-radius: 6px;
-  color: var(--ink);
-}
-
-/* CTA band */
-.cta-band {
-  background: var(--forest);
-  color: #fff;
-  padding: 56px 0;
-}
-.cta-band h2 { color: #fff; }
-.cta-band p { color: #DDE6DC; }
-
-.cta-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.contact-block { text-align: right; }
-.contact-detail {
-  margin: 12px 0 0;
-  font-size: 0.9rem;
-  color: #C9D6C6;
-}
-
-.cta-band .btn-primary { background: var(--amber); color: var(--forest-deep); font-weight: 600; }
-.cta-band .btn-primary:hover { background: #F0B268; }
-
-/* Footer */
-.site-footer {
-  padding: 24px 0;
-  font-size: 0.85rem;
-  color: #83816F;
-}
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-/* --- LOJA, PRODUTOS E CARRINHO --- */
+/* ============================================================================
+ * 6. PÁGINA DE PRODUTOS E CARRINHO
+ * ============================================================================ */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -416,19 +507,37 @@ a { color: inherit; }
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  transition: transform 0.15s ease;
+  height: 100%;
+  text-shadow: none !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(10, 37, 64, 0.12);
 }
 
+.product-card h3, .product-card p, .product-card span {
+  text-shadow: none !important;
+  color: #1E293B !important;
+}
+.product-card h3 { color: var(--forest-deep) !important; }
+
 .product-img-placeholder {
-  font-size: 3rem;
-  background: var(--bg-warm);
-  border-radius: var(--radius);
-  padding: 20px 0;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  padding: 0 !important;
+  background-color: #f7f7f7;
+  border-radius: 8px 8px 0 0;
   margin-bottom: 12px;
+}
+
+.product-img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .product-price {
@@ -442,7 +551,7 @@ a { color: inherit; }
 /* Carrinho Flutuante */
 .cart-float-btn {
   position: fixed;
-  bottom: 28px;
+  bottom: 70px;
   right: 28px;
   background: var(--forest-deep);
   color: #fff;
@@ -467,7 +576,7 @@ a { color: inherit; }
   font-size: 0.9rem;
 }
 
-/* Modal do Carrinho e Detalhes */
+/* Modal */
 .cart-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -477,11 +586,10 @@ a { color: inherit; }
   align-items: center;
   z-index: 200;
   padding: 16px;
+  transition: opacity 0.3s ease;
 }
 
-.cart-modal-backdrop.hidden {
-  display: none;
-}
+.cart-modal-backdrop.hidden { display: none; }
 
 .cart-modal-content {
   background: var(--bg);
@@ -490,6 +598,7 @@ a { color: inherit; }
   border-radius: var(--radius);
   padding: 24px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-shadow: none !important;
 }
 
 .cart-modal-header {
@@ -500,13 +609,7 @@ a { color: inherit; }
   padding-bottom: 12px;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--ink);
-}
+.close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #000; }
 
 .cart-items-list {
   list-style: none;
@@ -534,13 +637,18 @@ a { color: inherit; }
   border-top: 2px solid var(--forest);
 }
 
-.style-full {
-  width: 100%;
-  text-align: center;
-  margin-top: 16px;
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: 8px;
 }
 
-/* Depoimentos */
+/* ============================================================================
+ * 7. DEPOIMENTOS, CADASTROS E FORMULÁRIOS
+ * ============================================================================ */
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -557,32 +665,20 @@ a { color: inherit; }
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-shadow: none !important;
 }
 
-.review-stars {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
+.review-card h3, .review-card p, .review-card span {
+  text-shadow: none !important;
+  color: #1E293B !important;
 }
 
-.review-text {
-  font-style: italic;
-  color: var(--ink);
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
+.review-stars { font-size: 1.1rem; margin-bottom: 12px; }
+.review-text { font-style: italic; line-height: 1.5; margin-bottom: 20px; }
 
-.review-author strong {
-  display: block;
-  color: var(--forest-deep);
-  font-weight: 600;
-}
+.review-author strong { display: block; color: var(--forest-deep); font-weight: 600; }
+.review-author span { font-size: 0.85rem; color: #666; }
 
-.review-author span {
-  font-size: 0.85rem;
-  color: #666;
-}
-
-/* Formulários e Cadastros */
 .add-review-section,
 .pet-profile-section {
   background: #fff;
@@ -592,10 +688,17 @@ a { color: inherit; }
   margin-top: 24px;
   margin-bottom: 32px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  text-shadow: none !important;
 }
 
-.review-form,
-.profile-form {
+.add-review-section h2, .add-review-section h3,
+.pet-profile-section h2, .pet-profile-section h3,
+.tutor-box h3, .form-group label {
+  text-shadow: none !important;
+  color: var(--forest-deep) !important;
+}
+
+.review-form, .profile-form {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -612,12 +715,13 @@ a { color: inherit; }
   display: flex;
   flex-direction: column;
   gap: 6px;
+  text-shadow: none !important;
 }
 
 .form-group label {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--ink);
+  color: #1E293B;
 }
 
 .form-group input,
@@ -642,43 +746,6 @@ a { color: inherit; }
   background: #fff;
 }
 
-.clickable-product {
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.clickable-product:hover {
-  opacity: 0.8;
-}
-
-.style-center { text-align: center; }
-
-.style-big-icon {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem !important;
-}
-
-.detail-description {
-  font-size: 0.95rem;
-  color: var(--ink);
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.remove-item-btn {
-  background: none;
-  border: none;
-  color: #e74c3c;
-  font-size: 1.3rem;
-  cursor: pointer;
-  margin-left: 8px;
-}
-
 .tutor-box {
   background: var(--bg);
   border: 1px solid var(--line);
@@ -687,23 +754,8 @@ a { color: inherit; }
   margin-bottom: 24px;
 }
 
-.tutor-box h3 {
-  font-size: 1.1rem;
-  color: var(--forest-deep);
-  margin-bottom: 12px;
-}
-
-.form-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-
-.form-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-}
+.form-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.form-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
 
 .btn-delete-pet {
   background: none;
@@ -714,15 +766,71 @@ a { color: inherit; }
   cursor: pointer;
   font-size: 0.85rem;
 }
+.btn-delete-pet:hover { background: #e74c3c; color: #fff; }
 
-.btn-delete-pet:hover {
-  background: #e74c3c;
-  color: #fff;
+/* Caixas de instrução sobrepostas */
+.reviews-hero-text, 
+section.reviews > .wrap > p, 
+.reviews p.intro,
+.depoimentos-subtitle,
+.products-subtitle,
+.produtos-instruction,
+section.products > .wrap > p {
+  background-color: rgba(247, 249, 250, 0.9);
+  color: #1E293B !important;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  text-shadow: none !important;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
 }
 
-.style-mb-16 { margin-bottom: 16px; }
+/* ============================================================================
+ * 8. ANIMAÇÕES (FLUTUAÇÃO DE PETS)
+ * ============================================================================ */
+@keyframes flutuar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
 
-/* Responsive Media Queries Gerais */
+@keyframes floatPet {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.8deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.floating-pet-1 { animation: floatPet 4s ease-in-out infinite; }
+.floating-pet-2 { animation: floatPet 5s ease-in-out infinite 1s; }
+.floating-pet-3 { animation: floatPet 4.5s ease-in-out infinite 0.5s; }
+.floating-pet-4 { animation: floatPet 5.5s ease-in-out infinite 1.5s; }
+
+@keyframes floatServiceSoft {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(0.3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.service-float-1 { animation: floatServiceSoft 7s ease-in-out infinite; }
+.service-float-2 { animation: floatServiceSoft 8.5s ease-in-out infinite 1s; }
+.service-float-3 { animation: floatServiceSoft 8s ease-in-out infinite 0.5s; }
+.service-float-4 { animation: floatServiceSoft 9s ease-in-out infinite 1.5s; }
+
+@keyframes slideDownHeader {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================================
+ * 9. RESPONSIVIDADE (MEDIA QUERIES)
+ * ============================================================================ */
 @media (max-width: 800px) {
   .main-nav, .header-cta { display: none; }
   .nav-toggle { display: flex; }
@@ -734,10 +842,26 @@ a { color: inherit; }
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--bg);
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--line);
+    background: var(--forest-deep);
+    padding: 24px;
+    border-bottom: 3px solid var(--amber);
     gap: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 99;
+  }
+
+  .main-nav.open a {
+    color: #FFFFFF !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-cadastro-link {
+    display: block !important;
+    color: var(--amber) !important;
+    font-weight: 700 !important;
   }
 
   .hero-inner { grid-template-columns: 1fr; }
@@ -757,388 +881,5 @@ a { color: inherit; }
   .service-media {
     max-width: 100%;
     aspect-ratio: 16 / 9;
-  }
-}
-/* Animação de entrada suave para o cabeçalho */
-@keyframes slideDownHeader {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.site-header {
-  animation: slideDownHeader 0.6s ease-out forwards;
-}
-
-/* Efeito interativo leve na logo ao passar o mouse */
-.logo {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-.logo:hover .logo-icon {
-  animation: pulseLogo 0.8s infinite alternate ease-in-out;
-}
-
-@keyframes pulseLogo {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-4deg) scale(1.03);
-  }
-  100% {
-    transform: rotate(4deg) scale(1.03);
-  }
-}
-
-/* Transição elegante para os links do menu */
-.main-nav a {
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.main-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--primary, #FF6B35);
-  transition: width 0.3s ease;
-}
-
-.main-nav a:hover::after,
-.main-nav a.active::after {
-  width: 100%;
-}
-/* Padronização do tamanho das imagens dos produtos */
-.product-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.product-img-placeholder {
-  width: 100%;
-  height: 180px; /* Defina aqui a altura padrão que preferir (ex: 180px ou 200px) */
-  overflow: hidden;
-  padding: 0 !important;
-  background-color: #f7f7f7;
-  border-radius: 8px 8px 0 0;
-}
-
-.product-img-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Faz a foto preencher o espaço sem distorcer ou esticar */
-  display: block;
-}
-/* --- BÔNUS ESTÉTICO: EFEITO DE HOVER SUAVE NAS CARTAS E BOTÕES --- */
-.product-card, .service-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover, .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(10, 37, 64, 0.12);
-}
-@keyframes pulseBtn {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-.btn-pulse {
-  animation: pulseBtn 2.5s infinite;
-}
-#cart-modal, #product-detail-modal {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-/* --- ANIMAÇÃO DE FLUTUAÇÃO SUAVE PARA OS PETS --- */
-@keyframes floatPet {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(0.8deg); /* Sobe 8px e inclina levemente */
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-}
-
-/* Classes de movimento com tempos diferentes para não flutuarem iguaizinhos */
-.floating-pet-1 {
-  animation: floatPet 4s ease-in-out infinite;
-}
-
-.floating-pet-2 {
-  animation: floatPet 5s ease-in-out infinite 1s; /* Começa com 1 segundo de atraso */
-}
-
-.floating-pet-3 {
-  animation: floatPet 4.5s ease-in-out infinite 0.5s;
-}
-
-.floating-pet-4 {
-  animation: floatPet 5.5s ease-in-out infinite 1.5s;
-}
-
-/* --- BÔNUS ESTÉTICO: ZOOM SUAVE NAS FOTOS DA GALERIA E CARTÕES AO PASSar O MOUSE --- */
-.gallery-card {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.gallery-card img {
-  transition: transform 0.5s ease;
-}
-
-.gallery-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 28px rgba(10, 37, 64, 0.15);
-}
-
-.gallery-card:hover img {
-  transform: scale(1.05); /* Dá um zoom delicado na foto do pet quando o mouse passa por cima */
-}
-/* --- ANIMAÇÃO MAIS SUAVE APENAS PARA OS SERVIÇOS --- */
-@keyframes floatServiceSoft {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-4px) rotate(0.3deg); /* Sobe menos e inclina bem pouco */
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-}
-
-/* Classes lentas e delicadas para a página de serviços */
-.service-float-1 {
-  animation: floatServiceSoft 7s ease-in-out infinite;
-}
-
-.service-float-2 {
-  animation: floatServiceSoft 8.5s ease-in-out infinite 1s;
-}
-
-.service-float-3 {
-  animation: floatServiceSoft 8s ease-in-out infinite 0.5s;
-}
-
-.service-float-4 {
-  animation: floatServiceSoft 9s ease-in-out infinite 1.5s;
-}
-/* --- CAIXA BRANCA SEMI-TRANSPARENTE PARA A PÁGINA DE SERVIÇOS --- */
-.services-container-box {
-  background-color: rgba(255, 255, 255, 0.9); /* Fundo branco levemente translúcido */
-  padding: 40px;
-  border-radius: var(--radius);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-/* Garante que os títulos e textos de serviços fiquem escuros e legíveis dentro da caixa */
-.services-container-box h2,
-.services-container-box h3 {
-  color: var(--forest-deep) !important;
-}
-
-.services-container-box p {
-  color: #1E293B !important;
-}
-/* --- CORREÇÃO DE LEITURA NA SEÇÃO SOBRE (INDEX) --- */
-.about {
-  background-color: #f8fafc !important; /* Fundo limpo e sólido para a seção Sobre */
-}
-
-.about h2,
-.about .about-text p,
-.about .quote p {
-  color: #0A2540 !important; /* Texto em azul marinho escuro de alta legibilidade */
-  text-shadow: none !important; /* Remove totalmente a sombra que estava embaçando as letras */
-}
-
-.about .quote cite {
-  color: #475569 !important; /* Cor suave para a citação/autor */
-  text-shadow: none !important;
-}
-/* --- CORREÇÃO DA SEÇÃO SOBRE (INDEX) --- */
-
-/* 1. Removemos a caixa escura translúcida geral dessa seção */
-.about-text {
-  background-color: transparent !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-
-/* 2. Deixamos o título "Um salão pequeno, de propósito" bem destacado e legível */
-.about-text h2 {
-  color: var(--forest-deep) !important;
-  text-shadow: none !important;
-  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
-  margin-bottom: 20px;
-}
-
-/* 3. Deixamos os parágrafos da história com uma cor escura sólida e limpa */
-.about-text p {
-  color: #1E293B !important; /* Azul escuro bem sólido */
-  text-shadow: none !important; /* Remove qualquer sombra borrada */
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-/* --- CORREÇÃO DA SEÇÃO FINAL (CTA WHATSAPP - INDEX) --- */
-
-/* Remove a sombra geral do texto dentro da faixa de contato */
-.cta-band, 
-.cta-band h2, 
-.cta-band p, 
-.cta-band .contact-detail {
-  text-shadow: none !important;
-}
-
-/* Deixa os textos com alta legibilidade */
-.cta-band h2 {
-  color: #FFFFFF !important;
-  font-weight: 700;
-}
-
-.cta-band p,
-.cta-band .contact-detail {
-  color: #F1F5F9 !important;
-}
-
-/* Limpa qualquer sombra indesejada no botão do WhatsApp dessa seção */
-.cta-band .btn-primary {
-  text-shadow: none !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important; /* Sombra suave apenas na profundidade do botão, se desejar */
-}
-/* ========================================================== */
-/* --- LIMPEZA GLOBAL DE SOMBRAS E OTIMIZAÇÃO DE LEITURA --- */
-/* ========================================================== */
-
-/* Remove qualquer sombra borrada de dentro de cartões, modais, formulários e blocos de texto em todo o site */
-.product-card, 
-.service-row, 
-.services-container-box, 
-.review-card, 
-.add-review-section, 
-.pet-profile-section, 
-.cart-modal-content, 
-.tutor-box,
-.form-group {
-  text-shadow: none !important;
-}
-
-/* Garante que todos os títulos e textos dentro desses blocos fiquem com cores sólidas e super legíveis */
-.product-card h3, .product-card p, .product-card span,
-.service-row h3, .service-row p, .service-row span,
-.services-container-box h2, .services-container-box h3, .services-container-box p,
-.review-card h3, .review-card p, .review-card span,
-.add-review-section h2, .add-review-section h3,
-.pet-profile-section h2, .pet-profile-section h3,
-.tutor-box h3, .form-group label {
-  text-shadow: none !important;
-  color: #1E293B !important; /* Azul escuro sólido para máxima legibilidade */
-}
-
-/* Mantém os títulos principais das caixas destacados no azul marinho da marca */
-.services-container-box h2,
-.services-container-box h3,
-.service-row h3,
-.product-card h3 {
-  color: var(--forest-deep) !important;
-}
-/* --- CORREÇÃO DE LEGIBILIDADE PARA SUBTÍTULOS E FRASES DE AVISO --- */
-
-/* Força subtítulos, parágrafos explicativos e chamadas a ficarem escuros em fundos claros */
-.services-container-box p,
-.pet-profile-section p,
-.add-review-section p,
-.profile-form p,
-.review-form p,
-main p {
-  color: #000000 !important; /* Cinza escuro sofisticado e super legível */
-  text-shadow: none !important;
-}
-/* --- DESTAQUE PARA FRASES EXECUTADAS DIRETAMENTE SOBRE O FUNDO/IMAGEM --- */
-
-/* 1. Frase da página de Depoimentos / Avaliações */
-.reviews-hero-text, 
-section.reviews > .wrap > p, 
-.reviews p.intro,
-.depoimentos-subtitle {
-  background-color: rgba(247, 249, 250, 0.85); /* Fundo azul marinho escuro translúcido */
-  color: #000000 !important;                  /* Texto branco brilhante */
-  padding: 12px 20px;
-  border-radius: 8px;
-  display: inline-block;                      /* Faz a caixa abraçar apenas o texto */
-  text-shadow: none !important;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* 2. Frase da página de Produtos ("Clique na foto do produto...") */
-.products-subtitle,
-.produtos-instruction,
-section.products > .wrap > p {
-  background-color: rgba(247, 249, 250, 0.85); /* Fundo branco levemente translúcido */
-  color: #000000 !important;                  /* Texto azul marinho bem escuro */
-  padding: 10px 18px;
-  border-radius: 8px;
-  display: inline-block;
-  font-weight: 600;
-  text-shadow: none !important;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-/* --- AJUSTE DO MENU MOBILE PARA EXIBIR O CADASTRO --- */
-.mobile-cadastro-link {
-  display: none; /* Fica oculto no computador, pois já tem o botão no header */
-}
-
-@media (max-width: 800px) {
-  /* Quando o menu mobile estiver aberto (.open) */
-  .main-nav.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--forest-deep); /* Fundo azul marinho elegante */
-    padding: 24px;
-    border-bottom: 3px solid var(--amber);
-    gap: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    z-index: 99;
-  }
-
-  .main-nav.open a {
-    color: #FFFFFF !important;
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 8px 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
-  }
-
-  /* Faz o link de cadastro aparecer no menu mobile com destaque em laranja */
-  .mobile-cadastro-link {
-    display: block !important;
-    color: var(--amber) !important;
-    font-weight: 700 !important;
   }
 }
