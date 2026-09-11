@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ============================================================================
+/* /* ============================================================================
  * 1. NAVEGAÇÃO MOBILE (MENU HAMBÚRGUER)
  * ============================================================================ */
 function initMobileNavigation() {
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
+  const navToggle = document.getElementById('navToggle') || document.getElementById('nav-toggle');
+  const mainNav = document.getElementById('mainNav') || document.getElementById('main-nav');
 
   if (!navToggle || !mainNav) return;
 

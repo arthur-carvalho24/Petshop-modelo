@@ -20,7 +20,7 @@
 
 /* Fundo translúcido restrito apenas onde o texto está escrito */
 .hero-text, .about-text {
-  background-color: rgba(15, 23, 42, 0.75); /* Fundo escuro elegante */
+  background-color: rgba(255, 255, 255, 0.75); /* Fundo escuro elegante */
   padding: 30px;
   border-radius: var(--radius);
   display: inline-block; /* Faz a caixa se ajustar ao tamanho do conteúdo */
@@ -1071,7 +1071,7 @@ a { color: inherit; }
 .profile-form p,
 .review-form p,
 main p {
-  color: #334155 !important; /* Cinza escuro sofisticado e super legível */
+  color: #000000 !important; /* Cinza escuro sofisticado e super legível */
   text-shadow: none !important;
 }
 /* --- DESTAQUE PARA FRASES EXECUTADAS DIRETAMENTE SOBRE O FUNDO/IMAGEM --- */
@@ -1104,4 +1104,41 @@ section.products > .wrap > p {
   text-shadow: none !important;
   margin-bottom: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+/* --- AJUSTE DO MENU MOBILE PARA EXIBIR O CADASTRO --- */
+.mobile-cadastro-link {
+  display: none; /* Fica oculto no computador, pois já tem o botão no header */
+}
+
+@media (max-width: 800px) {
+  /* Quando o menu mobile estiver aberto (.open) */
+  .main-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--forest-deep); /* Fundo azul marinho elegante */
+    padding: 24px;
+    border-bottom: 3px solid var(--amber);
+    gap: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 99;
+  }
+
+  .main-nav.open a {
+    color: #FFFFFF !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  }
+
+  /* Faz o link de cadastro aparecer no menu mobile com destaque em laranja */
+  .mobile-cadastro-link {
+    display: block !important;
+    color: var(--amber) !important;
+    font-weight: 700 !important;
+  }
 }
