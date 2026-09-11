@@ -110,7 +110,8 @@ a { color: inherit; text-decoration: none; }
 /* ============================================================================
  * 3. HEADER E NAVEGAÇÃO
  * ============================================================================ */
-.site-header {
+
+ .site-header {
   position: sticky;
   top: 0;
   background: var(--forest-deep);
@@ -144,13 +145,35 @@ a { color: inherit; text-decoration: none; }
   transform: scale(1.05);
 }
 
+/* --- ANIMAÇÃO DA LOGO: PULSO + VAI E VEM RÁPIDO --- */
 .logo-icon, 
 .brand-badge-icon {
   animation: flutuar 3s ease-in-out infinite;
 }
 
+/* Efeito interativo leve na logo ao passar o mouse */
+.logo {
+   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
 .logo:hover .logo-icon {
-  animation: pulseLogo 0.8s infinite alternate ease-in-out;
+ animation: pulseLogo 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes pulseLogo {
+      0% {
+     transform: rotate(0deg);
+    }
+      50% {
+    transform: rotate(-4deg) scale(1.03);
+    }
+      100% {
+    transform: rotate(4deg) scale(1.03);
+    }
 }
 
 .main-nav {
@@ -829,14 +852,49 @@ section.products > .wrap > p {
 }
 
 /* ============================================================================
- * 9. RESPONSIVIDADE (MEDIA QUERIES)
+ * RESPONSIVIDADE E MENU HAMBÚRGUER (EXCLUSIVO PARA MOBILE)
  * ============================================================================ */
-@media (max-width: 800px) {
-  .main-nav, .header-cta { display: none; }
-  .nav-toggle { display: flex; }
 
+/* Garante que o botão hambúrguer esteja oculto no computador e visível no celular */
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  /* Oculta o menu tradicional e o botão de cadastro do topo no celular */
+  .main-nav, 
+  .header-cta { 
+    display: none !important; 
+  }
+  
+  /* Exibe os três tracinhos no celular */
+  .nav-toggle { 
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: auto; /* Joga o hambúrguer para o canto direito */
+  }
+
+  .nav-toggle span {
+    width: 24px;
+    height: 3px;
+    background: #FFFFFF;
+    border-radius: 2px;
+  }
+
+  /* Ajusta o respiro lateral do cabeçalho no celular */
+  .header-inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Quando o menu é aberto (.open via JavaScript) */
   .main-nav.open {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -858,12 +916,14 @@ section.products > .wrap > p {
     border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
   }
 
+  /* Faz o link de cadastro aparecer dentro do menu hambúrguer no celular */
   .mobile-cadastro-link {
     display: block !important;
     color: var(--amber) !important;
     font-weight: 700 !important;
   }
 
+  /* Outros ajustes de layout mobile */
   .hero-inner { grid-template-columns: 1fr; }
   .hero-art { order: -1; max-width: 260px; margin: 0 auto; }
   .about-inner { grid-template-columns: 1fr; }
@@ -882,4 +942,91 @@ section.products > .wrap > p {
     max-width: 100%;
     aspect-ratio: 16 / 9;
   }
+}
+/* --- ESPAÇAMENTO PARA A ÁREA DE ABAS E BOTÃO DE ADICIONAR PET --- */
+#btn-add-pet {
+  margin-bottom: 12px; /* Afasta o botão "+ Adicionar Pet" das abas abaixo */
+}
+
+#pets-tabs-nav {
+  margin-top: 8px !important;
+  margin-bottom: 28px !important; /* Cria um espaçamento generoso entre a aba "luna" e os campos de texto do formulário */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+/* --- CABEÇALHO EXPANDIDO DE PONTA A PONTA NA TELA DO COMPUTADOR --- */
+
+.site-header {
+  width: 100%;
+}
+
+.header-inner {
+  max-width: 100% !important; /* Libera para ocupar a largura total da tela */
+  padding-left: 40px !important;  /* Respiro elegante na borda esquerda */
+  padding-right: 40px !important; /* Respiro elegante na borda direita */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* Garante que o menu e o botão fiquem bem distribuídos nas pontas */
+.main-nav {
+  display: flex;
+  gap: 32px; /* Espaçamento confortável entre os links do menu */
+}
+/* ============================================================================
+ * BLINDAGEM ANTI-ESTOURO PARA DISPOSITIVOS MÓVEIS
+ * ============================================================================ */
+
+/* Garante que o cálculo de largura considere bordas e paddings, evitando quebras */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* Força o corpo e o HTML a nunca ultrapassarem a largura exata da tela */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Trava qualquer imagem, vídeo ou grid para nunca vazarem do container */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Garante que caixas de texto longas ou flexbox não empurrem a tela para o lado */
+.wrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+/* --- CORREÇÃO DA LEGENDA E TEXTOS NA PÁGINA DE PRODUTOS --- */
+.product-card h3, 
+.product-card p, 
+.product-card span,
+.cart-modal-content p,
+.cart-modal-content h3 {
+  color: #1E293B !important; /* Cor escura e de alto contraste */
+  text-shadow: none !important;
+}
+
+.product-card .product-price {
+  color: var(--forest-deep) !important; /* Mantém o preço com destaque elegante */
+}
+/* --- CORREÇÃO DA FRASE DE AVALIAÇÕES / DEPOIMENTOS --- */
+.reviews-hero-text, 
+section.reviews > .wrap > p, 
+.reviews p.intro,
+.depoimentos-subtitle,
+.add-review-section p {
+  color: #1E293B !important; /* Deixa o texto escuro e com alto contraste */
+  text-shadow: none !important;
+}
+/* --- CORREÇÃO DA FRASE DA PÁGINA DE CADASTRO --- */
+.pet-profile-section p, 
+.pet-profile-section .section-subtitle,
+.profile-header p {
+  color: #1E293B !important; /* Cor escura e perfeitamente legível */
+  text-shadow: none !important;
 }
