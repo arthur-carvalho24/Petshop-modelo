@@ -955,26 +955,7 @@ section.products > .wrap > p {
   flex-wrap: wrap;
   gap: 10px;
 }
-/* --- CABEÇALHO EXPANDIDO DE PONTA A PONTA NA TELA DO COMPUTADOR --- */
 
-.site-header {
-  width: 100%;
-}
-
-.header-inner {
-  max-width: 100% !important; /* Libera para ocupar a largura total da tela */
-  padding-left: 40px !important;  /* Respiro elegante na borda esquerda */
-  padding-right: 40px !important; /* Respiro elegante na borda direita */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-}
-
-/* Garante que o menu e o botão fiquem bem distribuídos nas pontas */
-.main-nav {
-  display: flex;
-  gap: 32px; /* Espaçamento confortável entre os links do menu */
-}
 /* ============================================================================
  * BLINDAGEM ANTI-ESTOURO PARA DISPOSITIVOS MÓVEIS
  * ============================================================================ */
