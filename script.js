@@ -391,7 +391,7 @@ function initServiceModalSystem() {
         }
       });
 
-      const numeroWhatsApp = '5583999999999'; // Substitua pelo seu número real
+      const numeroWhatsApp = '5583682172646'; // Substitua pelo seu número real
       const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
       
       window.open(urlWhatsApp, '_blank');
